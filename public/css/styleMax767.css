@@ -1,0 +1,963 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap');
+
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Vollkorn', serif;
+*/
+
+/* ====================================================== */
+/* ======================= GLOBAL ======================= */
+/* ====================================================== */
+
+* {
+    padding: 0;
+    margin: 0;
+
+}
+
+html, body {
+    background-color: var(--background-branco-inter);
+
+    font-family: 'Montserrat', sans-serif;
+
+    height: 100%;
+
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+
+}
+
+:root {
+    --background-header-top: #f1f1f1;
+    --background-branco-inter: #FAFCFE;
+    --background-preto-inter: #000000;
+    --background-verde-agua: #17d9db;
+    --background-comentarios: #227C9D;
+
+    --azul-inter: #001EA3;
+    --preto-inter: #000000;
+    --branco-inter: #FAFCFE;
+
+    --icon-whatsapp: #25D366;
+
+    --color-preto-chumbo: #34333a;
+    --color-verde-agua: #17d9db;
+    --color-gray: #c3c3c3;
+
+    --azul-inter-overlay: #001EA380;
+
+    --botton-acordeon: #eeeeee;
+
+    /* ANTIGO */
+
+    --text-white: #ffffff;
+    --text-black: #000000;
+    --text-purple: #38095c;
+    --text-purple-tranparent: #38095c9a;
+    --text-gray: #919496;
+    --text-gray2: #4e5461;
+    --text-gray3: #a6a8af;
+    --text-light-gray: #e0e0e0;
+    --text-light-gray2: #d4d4d4;
+    --text-light-gray3: #dfe4ee;
+    --text-light-gray4: #ffffff;
+    --text-blue-light: #07a4dc;
+    --text-blue: #166386;
+    --text-green: #0d9d10;
+    --text-light-green: #1aa21d;
+    --text-light-orange: #ff881a;
+    --text-orange: #ff5d01;
+    --text-light-orange-plus: #e07644;
+    --text-orange-plus: #a42903;
+    --text-light-blue-cart: #4480c1;
+    --text-blue-cart: #032a63;
+    --text-light-white: #fdfdfd;
+    --text-dark-white: #dddddd;
+    --text-yellow: #ecebb0;
+    
+    --alert-gren: #99cc333a;
+    --alert-text-gren: #339900;
+    --alert-red: #d453283a;
+    --alert-text-red: #a32a02;
+
+    --box-shadown: #262626;
+    --box-smooth-shadown: #2626269a;
+
+    --mandatory-red: #ad3737;
+    --mandatory-input: #de1616;
+    --mandatory-input-ok: #44cc3d;
+
+}
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    height: auto;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+}
+
+/* ====================================================== */
+/* ======================= HEADER ======================= */
+/* ====================================================== */
+
+.container header {
+    width: 100%;
+    height: auto;
+
+}
+
+.container header .header-top {
+    padding: 1%;
+
+    width: 98%;
+    height: auto;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    background-color: var(--background-header-top);
+
+}
+
+.container header .header-top .informacao {
+    width: 100%;
+    height: auto;
+
+    /*background-color: blueviolet;*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container header .header-top .informacao p {
+    font-size: 12px;
+
+}
+
+.container header .header-top .contatos {
+    width: 50%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*background-color: burlywood;*/
+
+}
+
+.container header .header-top .contatos .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 1%;
+    margin-right: 1%;
+
+    width: 4%;
+    height: auto;
+
+}
+
+.container header .header-top .contatos .icon svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+
+    color: var(--icon-whatsapp);
+
+}
+
+.container header .header-top .contatos p {
+    font-size: 12px;
+
+}
+
+.container header .header-menu {
+    padding: 0%;
+
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
+
+}
+
+.container header .header-menu .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5%;
+
+    width: 90%;
+    height: auto;
+
+    /*background-color: beige;*/
+
+}
+
+.container header .header-menu .logo img {
+    width: 30%;
+    height: auto;
+
+}
+
+.container header .header-menu .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    height: auto;
+
+    /*background-color: aquamarine;*/
+
+}
+
+.container header .header-menu .menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    list-style: none;
+
+    width: 100%;
+    height: auto;
+
+}
+
+.container header .header-menu .menu ul a {
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px 20px;
+
+    font-weight: 600;
+
+    color: var(--color-preto-chumbo);
+
+    border-radius: 50%;
+
+    transition: background-color, color, border-radius, .3s ease-in-out;
+}
+
+.container header .header-menu .menu ul a:hover {
+    background-color: var(--color-verde-agua);
+
+    color: var(--branco-inter);
+
+    border-radius: 5px;
+    
+
+}
+
+/* HEADER | MENU */
+.topnav {
+    overflow: hidden;
+    background-color: var(--background-header-top);
+
+    width: 100%;
+    height: auto;
+
+    margin-right: 0%;
+
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: var(--color-preto-chumbo);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 0%;
+}
+
+.topnav a:hover {
+    background-color: var(--background-verde-agua);
+    color: black;
+    border-radius: 0px;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+/* ====================================================== */
+/* ======================== HOME ======================== */
+/* ====================================================== */
+
+/* CARROCEL */
+section .slideshow-container .mySlides {display: none;}
+section .slideshow-container .mySlides img {vertical-align: middle;}
+
+/* Slideshow container */
+section .slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+section .slideshow-container .mySlides .text {
+  color: var(--branco-inter);
+  font-size: 40px; 
+  /*padding: 8px 12px;*/
+  padding: 0;
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Vollkorn', serif;
+  font-weight: 700;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: var(--azul-inter-overlay);
+}
+
+/* Fading animation */
+section .slideshow-container .fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+/* ======================================== */
+
+/* SERVICOS */
+.container section {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.container section .servicos {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 2%;
+
+    width: 86%;
+    height: auto;
+
+    flex-wrap: wrap;
+
+}
+
+.container section .servicos .quadro {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 2%;
+
+    width: 86%;
+    height: auto;
+
+}
+
+.container section .servicos .quadro .img {
+    width: 100%;
+    height: auto;
+
+}
+
+.container section .servicos .quadro .img img {
+    width: 100%;
+    height: auto;
+
+}
+
+.container section .servicos .quadro .texto {
+    font-size: 25px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    margin-top: 5%;
+
+}
+
+.container section .servicos .quadro .texto p {
+    color: var(--color-preto-chumbo);
+
+}
+
+.container section .servicos .quadro .texto p strong {
+    color: var(--color-verde-agua);
+
+    font-weight: 600;
+
+}
+/* ======================================== */
+
+/* ENDERECO */
+.container section .endereco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+
+    flex-wrap: wrap;
+
+}
+
+.container section .endereco .local {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 5% 5% 5% 5%;
+
+    width: 90%;
+    height: auto;
+
+    color: var(--color-preto-chumbo);
+    
+}
+
+.container section .endereco .local h2 {
+    font-size: 30px;
+    font-weight: 300;
+
+    text-align: center;
+
+}
+
+.container section .endereco .local strong {
+    font-size: 48px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    color: var(--color-verde-agua);
+
+    text-align: center;
+
+}
+
+.container section .endereco .local p {
+    font-size: 18px;
+    font-weight: 300;
+
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+
+    width: 95%;
+    height: auto;
+
+    text-align: justify;
+
+}
+
+.container section .endereco .local h3 {
+    font-size: 30px;
+    font-weight: 300;
+
+    text-align: center;
+
+}
+
+.container section .endereco .local a {
+    font-size: 18px;
+    font-weight: 300;
+
+    margin-top: 5%;
+
+    text-decoration: none;
+
+    background-color: var(--background-verde-agua);
+
+    border-radius: 5px;
+
+    padding: 2%;
+
+    color: var(--branco-inter);
+
+}
+
+.container section .endereco .carrocel-endereco {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.container section .endereco .carrocel-endereco .img {
+    box-shadow: 0px 0px 0px 0px var(--color-preto-chumbo);
+
+}
+
+.container section .endereco .carrocel-endereco .img img {
+    width: 100%;
+    height: auto;
+
+    box-shadow: 0px 3px 5px -3px var(--color-preto-chumbo);
+
+}
+
+.container section .endereco .carrocel-endereco .mapa {
+    margin-top: -10%;
+    margin-left: 0%;
+
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container section .endereco .carrocel-endereco .mapa iframe {
+    box-shadow: 0px 3px 40px -20px var(--color-preto-chumbo);
+
+}
+/* ======================================== */
+
+/* COMENTARIOS */
+.container section .comentarios {
+    width: 100%;
+    height: auto;
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+}
+
+.container section .comentarios h2 {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Vollkorn', serif;
+
+    color: var(--color-preto-chumbo);
+
+    padding: 2%;
+
+    text-align: center;
+
+}
+
+/* Slideshow container */
+.container section .comentarios .slideshow-container {
+    position: relative;
+    background: var(--background-comentarios);
+
+    padding: 0% 0% 0% 0%;
+}
+
+/* Slides */
+.container section .comentarios .slideshow-container .postagens {
+    display: none;
+    padding: 60px;
+    text-align: center;
+}
+
+/* Next & previous buttons */
+.container section .comentarios .slideshow-container .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -30px;
+    padding: 16px;
+    color: var(--branco-inter);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.container section .comentarios .slideshow-container .next {
+    position: absolute;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.container section .comentarios .slideshow-container .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+}
+
+/* The dot/bullet/indicator container */
+.dot-container {
+    text-align: center;
+    padding: 20px;
+    background: #ddd;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+/* Add a background color to the active dot/circle */
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Add an italic font style to all quotes */
+.container section .comentarios .slideshow-container .postagens q {
+    font-style: italic;
+    font-weight: 500;
+
+    color: var(--preto-inter);
+
+}
+
+/* Add a blue color to the author */
+.container section .comentarios .slideshow-container .postagens .autor {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--branco-inter); 
+
+    margin-top: 1%;
+
+}
+/* ======================================== */
+
+/* ACORDEON */
+.container section .acordeon {
+    margin-bottom: 5%;
+
+    width: 90%;
+    height: auto;
+
+}
+
+.container section .acordeon h2 {
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Vollkorn', serif;
+
+    color: var(--color-preto-chumbo);
+
+    padding: 2%;
+
+    text-align: center;
+
+}
+
+.container section .acordeon .accordion {
+    background-color: var(--botton-acordeon);
+    color: var(--color-preto-chumbo);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    transition: 0.4s;
+
+    margin: 0.5%;
+}
+  
+.container section .acordeon .active, .accordion:hover {
+    background-color:var(--background-verde-agua); 
+}
+  
+.container section .acordeon .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: var(--background-branco-inter);
+    overflow: hidden;
+
+}
+
+.container section .acordeon .panel p {
+    font-size: 12px;
+
+}
+/* ======================================== */
+
+/* ====================================================== */
+/* ======================= FOOTER ======================= */
+/* ====================================================== */
+
+.container footer {
+    width: 100%;
+    height: auto;
+
+}
+
+.container footer .footer-conteudo {
+    padding: 1%;
+
+    width: 98%;
+    height: auto;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+}
+
+.container footer .footer-conteudo .logo {
+    width: 100%;
+    height: auto;
+
+}
+
+.container footer .footer-conteudo .logo img {
+    padding: 0 20% 5% 20%;
+
+    width: 60%;
+    height: auto;
+
+}
+
+.container footer .footer-conteudo .menu {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container footer .footer-conteudo .menu ul {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.container footer .footer-conteudo .menu ul .contatos {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 1%;
+
+}
+
+.container footer .footer-conteudo .menu ul .contatos .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 10%;
+    height: auto;
+
+}
+
+.container footer .footer-conteudo .menu ul .contatos .icon svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+
+    color: var(--icon-whatsapp);
+
+}
+
+.container footer .footer-conteudo .menu ul .endereco {
+    width: 70%;
+    height: auto;
+
+    line-height: 1.5;
+
+    margin-top: 0%;
+
+}
+
+.container footer .footer-conteudo .menu ul .social {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 36%;
+    height: auto;
+
+    margin-top: 1%;
+
+}
+
+.container footer .footer-conteudo .menu ul .social .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 3%;
+
+    padding: 5%;
+
+    width: 84%;
+    height: auto;
+
+    background-color: var(--color-verde-agua);
+
+    color: var(--preto-inter);
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    transition: color, .3s ease-in-out;
+
+}
+
+.container footer .footer-conteudo .menu ul .social .icon:hover {
+    color: var(--branco-inter);
+
+}
+
+.container footer .footer-conteudo .menu ul .social .icon svg {
+    padding: 10%;
+
+    width: 80%;
+    height: auto;
+
+}
+
+.container footer .copyright {
+    padding: 2%;
+
+    width: 96%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--background-verde-agua);
+
+}
+
+.container footer .copyright p b a {
+    text-decoration: none;
+
+    color: var(--preto-inter);
+
+}
