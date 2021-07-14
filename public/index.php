@@ -47,6 +47,7 @@ include './../app/autoload.php';
     <script src="<?=URL?>/public/js/acordeon.js"></script>
     <script src="<?=URL?>/public/js/comentarios.js"></script>
     <script src="<?=URL?>/public/js/menu.js"></script>
+    <script src="<?=URL?>/public/js/modal.js"></script>
 </body>
 </html>
 <?php

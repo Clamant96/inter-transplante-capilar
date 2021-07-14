@@ -9,14 +9,96 @@ class Paginas extends Controller {
     }
 
     public function index() {
-        $dados = [
-            'titulo' => 'Pagina Inicial',
-            'descricao' => 'Criacao de site em modelo MVC',
-            'posts' => $this->postModel->listarPosts(),
-            'produtos' => $this->produtoModel->listarProdutos()
-        ];
+        
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/home');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
 
         $this->view('paginas/home', $dados);
+        
     }
 
     public function sobre() {
@@ -25,6 +107,742 @@ class Paginas extends Controller {
         ];
         
         $this->view('paginas/sobre', $dados);
+    }
+
+    public function home() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/home');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/home', $dados);
+    }
+
+    public function sobreClinica() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/clinica');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/clinica', $dados);
+    }
+
+    public function transplanteMasculino() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/transplante_masculino');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/transplante_masculino', $dados);
+    }
+
+    public function transplanteSombrancelha() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/transplante_sombrancelha');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/transplante_sombrancelha', $dados);
+    }
+
+    public function transplanteBarba() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/transplante_barba');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/transplante_barba', $dados);
+    }
+
+    public function usoPelosCorporais() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/uso_pelos_corporais');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/uso_pelos_corporais', $dados);
+    }
+
+    public function mesoterapiaCapilar() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/mesoterapia_capilar');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/mesoterapia_capilar', $dados);
+    }
+
+    public function recesso() {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nome' => trim($formulario['nome']),
+                'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
+                'senha' => trim($formulario['senha']),
+                'confirmar_senha' => trim($formulario['confirmar_senha'])
+            ];
+
+            if(in_array('', $formulario)):
+
+                if(empty($formulario['nome'])):
+                    $dados['preencha_nome'] = 'Preencha o campo <b>Nome</b>';
+                else:
+                    $dados['preencha_nome'] = ''; 
+                endif;
+
+                if(empty($formulario['email'])):
+                    $dados['preencha_email'] = 'Preencha o campo <b>E-mail</b>';
+                else:
+                    $dados['preencha_email'] = ''; 
+                endif;
+
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
+                else:
+                    $dados['preencha_cel'] = ''; 
+                endif;
+
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
+                else:
+                    $dados['preencha_sexo'] = ''; 
+                endif;
+
+            else:
+                if(Checa::checarNome($formulario['nome'])):
+                    $dados['preencha_nome'] = 'O nome informado e invalido';
+
+                elseif(Checa::checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado e invalido';
+
+                elseif($this->usuarioModel->checarEmail($formulario['email'])):
+                    $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
+    
+                else:
+                    //e aqui que se insere os dados no banco de dados
+                    //chama chama o contrutor Usuarios
+                    //instancia a classe Usuario
+                    //armazena do $dados dentro do metodo armazenar()
+                    if($this->usuarioModel->armazenar($dados)):
+                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/recesso');
+                    else:
+                        die("Erro ao armazenar usuario no banco de dados");
+
+                    endif;
+
+                endif;
+                
+            endif;
+
+            /*var_dump($formulario);*/
+        else:
+            $dados = [
+                'nome' => '',
+                'email' => '',
+                'cel' => '',
+                'sexo' => '',
+                'senha' => '',
+                'confirmar_senha' => '',
+                'preencha_nome' => '',
+                'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
+                'preencha_senha' => '',
+                'preencha_confirmar_senha' => ''
+            ];
+            
+        endif;
+
+        $this->view('paginas/recesso', $dados);
     }
 
     /*DASHBOARD*/

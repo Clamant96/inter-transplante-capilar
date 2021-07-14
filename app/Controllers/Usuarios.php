@@ -4,8 +4,8 @@ class Usuarios extends Controller {
 
     public function __construct() {
         $this->usuarioModel = $this->model('Usuario');
-        $this->postModel = $this->model('Post');
-        $this->produtoModel = $this->model('Produto');
+        /*$this->postModel = $this->model('Post');
+        $this->produtoModel = $this->model('Produto');*/
     }
 
     public function cadastrar() {
@@ -14,6 +14,8 @@ class Usuarios extends Controller {
             $dados = [
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
+                'cel' => trim($formulario['cel']),
+                'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
                 'confirmar_senha' => trim($formulario['confirmar_senha'])
             ];
@@ -32,16 +34,16 @@ class Usuarios extends Controller {
                     $dados['preencha_email'] = ''; 
                 endif;
 
-                if(empty($formulario['senha'])):
-                    $dados['preencha_senha'] = 'Preencha o campo <b>Senha</b><br>A senha deve ter no minimo 6 caracteres';
+                if(empty($formulario['cel'])):
+                    $dados['preencha_cel'] = 'Preencha o campo <b>Cel.</b>';
                 else:
-                    $dados['preencha_senha'] = ''; 
+                    $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['confirmar_senha'])):
-                    $dados['preencha_confirmar_senha'] = 'Preencha o campo <b>Senha</b>';
+                if(empty($formulario['sexo'])):
+                    $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
-                    $dados['preencha_confirmar_senha'] = ''; 
+                    $dados['preencha_sexo'] = ''; 
                 endif;
 
             else:
@@ -51,34 +53,26 @@ class Usuarios extends Controller {
                 elseif(Checa::checarEmail($formulario['email'])):
                     $dados['preencha_email'] = 'O email informado e invalido';
 
-                //verifica se o email ja existe no banco de dados
-                //chama o contrutor Usuarios
-                //instancia a classe Usuario
-                //compara o $formulario['email'] dentro do metodo checarEmail()
                 elseif($this->usuarioModel->checarEmail($formulario['email'])):
                     $dados['preencha_email'] = 'O email informado ja se encontra cadastrado';
-
-                elseif(strlen($formulario['senha']) < 6):
-                    $dados['preencha_senha'] = 'A senha deve ter no minimo 6 caracteres';
-                
-                elseif($formulario['senha'] != $formulario['confirmar_senha']):
-                    $dados['preencha_confirmar_senha'] = 'As senhas sao diferentes';
-
+    
                 else:
-                    $dados['senha'] = password_hash($formulario['senha'], PASSWORD_DEFAULT);
-                    
                     //e aqui que se insere os dados no banco de dados
                     //chama chama o contrutor Usuarios
                     //instancia a classe Usuario
                     //armazena do $dados dentro do metodo armazenar()
                     if($this->usuarioModel->armazenar($dados)):
                         Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
-                        Url::redirecionar('usuarios/login');
+
+                        /* ARMAZE OS DADOS DO USUARIO NO CACHE */
+                        $_SESSION['usuario_nome'] = $formulario['nome'];
+
+                        Url::redirecionar('paginas/home');
                     else:
                         die("Erro ao armazenar usuario no banco de dados");
 
                     endif;
-                
+
                 endif;
                 
             endif;
@@ -88,20 +82,24 @@ class Usuarios extends Controller {
             $dados = [
                 'nome' => '',
                 'email' => '',
+                'cel' => '',
+                'sexo' => '',
                 'senha' => '',
                 'confirmar_senha' => '',
                 'preencha_nome' => '',
                 'preencha_email' => '',
+                'preencha_cel' => '',
+                'preencha_sexo' => '',
                 'preencha_senha' => '',
                 'preencha_confirmar_senha' => ''
             ];
             
         endif;
 
-        $this->view('usuarios/cadastrar', $dados);
+        $this->view('paginas/home', $dados);
     }
 
-    public function login() {
+    /*public function login() {
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
         if(isset($formulario)):
@@ -137,8 +135,6 @@ class Usuarios extends Controller {
                     if($usuario):
                         $this->criarSessaoUsuario($usuario);
                         
-                        /*var_dump($usuario);
-                        echo '<hr>';*/
                     else:
                         Sessao::mensagem('usuario', 'Usuario ou senha invalidos', 'alertaErro');
                     endif;
@@ -161,7 +157,7 @@ class Usuarios extends Controller {
 
         $this->view('usuarios/login', $dados);
     }
-
+    
     private function criarSessaoUsuario($usuario) {
         $_SESSION['usuario_id'] = $usuario->id;
         $_SESSION['usuario_nome'] = $usuario->nome;
@@ -171,7 +167,7 @@ class Usuarios extends Controller {
         Url::redirecionar('paginas/home');
 
     }
-
+    
     public function logout() {
         unset($_SESSION['usuario_id']);
         unset($_SESSION['usuario_nome']);
@@ -239,7 +235,6 @@ class Usuarios extends Controller {
                 
             endif;
 
-            /*var_dump($formulario);*/
         else:
             $alterar = $this->usuarioModel->lerUsuarioPorId($id);
 
@@ -274,25 +269,6 @@ class Usuarios extends Controller {
         $this->view('usuarios/perfil', $dados);
     }
 
-    /*public function vizualizarPedidos($id) {
-
-        $dados = [
-            'usuario' => $this->usuarioModel->lerUsuarioPorId($id)
-        ];
-
-        $this->view('usuarios/pedidos', $dados);
-    }*/
-
-    /*public function vizualizarMensagem($id) {
-        $dados = [
-            'produtos' => $this->produtoModel->listarProdutos(),
-            'usuario' => $this->usuarioModel->lerUsuarioPorId($id),
-            'usuarios' => $this->usuarioModel->listarUsuarios(),
-            'posts' => $this->postModel->listarPosts()
-        ];
-
-        $this->view('usuarios/mensagem', $dados);
-    }*/
 
     public function excluir($id) {
         if($this->usuarioModel->excluirConta($id)):
@@ -303,6 +279,6 @@ class Usuarios extends Controller {
             die("Erro ao excluir o produto");
         endif;
 
-    }
+    }*/
 
 }

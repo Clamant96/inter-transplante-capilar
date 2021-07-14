@@ -15,8 +15,10 @@ define('APP_NOME', 'Inter Transplante Capilar Avançado');
 
 define('APP_DEVELOPER', 'HelpConnect');
 
-define('APP_CEL', '(11) 9-9999-9999');
+define('APP_CEL', '(11) 9-9999-9999<br/>(11) 2667-6066');
 
-define('APP_ENDERECO', 'Av. Miguel Frias e Vasconcelos, 1200 São Paulo - 05345-000 São Paulo/SP');
+define('APP_ENDERECO', 'Rua Marcilio Dias, 109 - Lapa <br/>São Paulo-SP');
+
+define('APP_EMAIL', 'email@gmail.com');
 
 const APP_VERSAO = '1.0.0';

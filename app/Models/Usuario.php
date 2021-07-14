@@ -22,10 +22,12 @@ class Usuario {
     }
 
     public function armazenar($dados) {
-        $this->db->query("INSERT INTO tb_clientes(nome, email, senha) VALUES (:nome, :email, :senha)");
+        $this->db->query("INSERT INTO tb_clientes(nome, email, cel, sexo, senha) VALUES (:nome, :email, :cel, :sexo, :senha)");
         
         $this->db->bind("nome", $dados['nome']);
         $this->db->bind("email", $dados['email']);
+        $this->db->bind("cel", $dados['cel']);
+        $this->db->bind("sexo", $dados['sexo']);
         $this->db->bind("senha", $dados['senha']);
 
         if($this->db->executa()):

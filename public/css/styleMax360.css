@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /*
 font-family: 'Montserrat', sans-serif;
 font-family: 'Vollkorn', serif;
+font-family: 'Barlow', sans-serif;
 */
 
 /* ====================================================== */
@@ -19,19 +21,20 @@ font-family: 'Vollkorn', serif;
 html, body {
     background-color: var(--background-branco-inter);
 
-    font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Montserrat', sans-serif;*/
+    font-family: 'Barlow', sans-serif;
 
-    height: 100%;
+    height: auto;
 
     overflow: hidden;
     overflow-y: scroll;
 
 }
 
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     display: none;
 
-}
+}*/
 
 :root {
     --background-header-top: #f1f1f1;
@@ -128,7 +131,9 @@ html, body {
 
     flex-wrap: wrap;
 
-    background-color: var(--background-header-top);
+    background-color: #7daec7;
+
+    display: none;
 
 }
 
@@ -144,13 +149,30 @@ html, body {
 
 }
 
-.container header .header-top .informacao p {
+.container header .header-top .informacao .texto {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container header .header-top .informacao .texto p {
     font-size: 12px;
+
+    text-align: center;
+
+}
+
+.container header .header-top .informacao .icon {
+    display: none;
 
 }
 
 .container header .header-top .contatos {
-    width: 50%;
+    width: 100%;
     height: auto;
 
     display: flex;
@@ -161,20 +183,29 @@ html, body {
 
 }
 
-.container header .header-top .contatos .icon {
+.container header .header-top .contatos .bloco {
+    width: 50%;
+    height: auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-top: 1%;
-    margin-right: 1%;
+}
+
+.container header .header-top .contatos .bloco .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 2%;
 
     width: 8%;
     height: auto;
 
 }
 
-.container header .header-top .contatos .icon svg {
+.container header .header-top .contatos .bloco .icon svg {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -182,11 +213,11 @@ html, body {
     margin: 0;
     padding: 0;
 
-    color: var(--icon-whatsapp);
+    color: var(--branco-inter);
 
 }
 
-.container header .header-top .contatos p {
+.container header .header-top .contatos .bloco  p {
     font-size: 12px;
 
 }
@@ -215,12 +246,12 @@ html, body {
     width: 90%;
     height: auto;
 
-    /*background-color: beige;*/
+    background-color: #d3dadd;
 
 }
 
 .container header .header-menu .logo img {
-    width: 30%;
+    width: 60%;
     height: auto;
 
 }
@@ -337,82 +368,155 @@ html, body {
     }
 }
 
+/* MENU DROPDOWN */
+.topnav .redimencionado {
+    float: left;
+    display: block;
+    color: var(--color-preto-chumbo);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 0%;
+    margin-left: 2%;
+
+}
+
+.dropdown {
+    display: none !important;
+}
+
 /* ====================================================== */
 /* ======================== HOME ======================== */
 /* ====================================================== */
 
 /* CARROCEL */
-section .slideshow-container .mySlides {display: none;}
-section .slideshow-container .mySlides img {vertical-align: middle;}
+/* CARROCEL */
+section .banner {
+    width: 100%;
+    height: auto;
 
-/* Slideshow container */
-section .slideshow-container {
-  max-width: 100%;
-  position: relative;
-  margin: auto;
+    background-color: #B0E0E6;
+
+    display: none;
+
 }
 
-/* Caption text */
-section .slideshow-container .mySlides .text {
-  color: var(--branco-inter);
-  font-size: 40px; 
-  padding: 0;
-  position: absolute;
-  bottom: 40px;
-  width: 100%;
-  text-align: center;
-  font-family: 'Vollkorn', serif;
-  font-weight: 700;
+section .banner-celular {
+    display: block;
+
+    background-color: #B0E0E6;
+
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
+section .banner-celular img {
+    width: 100%;
+    height: auto;
 
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-    background-color: var(--azul-inter-overlay);
-}
-
-/* Fading animation */
-section .slideshow-container .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
 }
 
 /* ======================================== */
+
+/* SOBRE A TECNICA */
+.container section .sobre-tecnica {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    padding: 0%;
+
+    width: 100%;
+    height: auto;
+
+    background-color: #b0e0e6;
+
+}
+
+.container section .sobre-tecnica .bloco {
+    padding: 0%;
+    margin: 4% 0% 5% 0%;
+
+    width: 92%;
+    height: 45vh;
+
+    background-color: var(--color-preto-chumbo);
+
+    color: var(--branco-inter);
+
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.container section .sobre-tecnica .bloco h2 {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+    font-weight: 600;
+
+    margin-top: 12%;
+    margin-bottom: 14%; 
+
+}
+
+.container section .sobre-tecnica .bloco h2 p {
+    margin-left: 3%;
+
+    color: var(--color-verde-agua);
+
+}
+
+.container section .sobre-tecnica .bloco h3 {
+    font-size: 20px;
+    font-weight: 300;
+
+}
+
+.container section .sobre-tecnica .bloco h4 {
+    font-size: 20px;
+    font-weight: 300;
+
+    color: var(--color-verde-agua);
+
+}
+
+.container section .sobre-tecnica .bloco h5 {
+    font-size: 12px;
+    font-weight: 500;
+
+    padding-bottom: 1%;
+    margin-top: 20%;
+
+    border-bottom: 1px solid var(--color-verde-agua);
+
+}
+
+.container section .sobre-tecnica .img {
+    width: 100%;
+    height: 30vh;
+
+    margin-left: 2%;
+
+    background-image: url(../img/sobre_tecnica.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 130%;
+
+    display: none;
+
+}
 
 /* SERVICOS */
 .container section {
@@ -448,7 +552,7 @@ section .slideshow-container .fade {
 
     margin: 2%;
 
-    width: 86%;
+    width: 96%;
     height: auto;
 
 }
@@ -588,6 +692,8 @@ section .slideshow-container .fade {
     flex-direction: column;
     justify-content: center;
 
+    margin-right: 0%;
+
 }
 
 .container section .endereco .carrocel-endereco .img {
@@ -648,7 +754,7 @@ section .slideshow-container .fade {
 /* Slideshow container */
 .container section .comentarios .slideshow-container {
     position: relative;
-    background: var(--background-comentarios);
+    background: var(--background-verde-agua-escuro);
 
     padding: 0% 0% 0% 0%;
 }
@@ -716,6 +822,7 @@ section .slideshow-container .fade {
 .container section .comentarios .slideshow-container .postagens q {
     font-style: italic;
     font-weight: 500;
+    font-size: 20px;
 
     color: var(--preto-inter);
 
@@ -725,6 +832,7 @@ section .slideshow-container .fade {
 .container section .comentarios .slideshow-container .postagens .autor {
     font-size: 14px;
     font-weight: 600;
+    font-size: 20px;
 
     color: var(--branco-inter); 
 
@@ -796,6 +904,8 @@ section .slideshow-container .fade {
     width: 100%;
     height: auto;
 
+    background-color: #d3dadd;
+
 }
 
 .container footer .footer-conteudo {
@@ -814,15 +924,25 @@ section .slideshow-container .fade {
 }
 
 .container footer .footer-conteudo .logo {
-    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    width: 70%;
     height: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: 0%;
 
 }
 
 .container footer .footer-conteudo .logo img {
-    padding: 0 20% 5% 20%;
+    padding: 0%;
 
-    width: 60%;
+    width: 100%;
     height: auto;
 
 }
@@ -832,8 +952,15 @@ section .slideshow-container .fade {
     height: auto;
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+
+    margin-left: 0%;
+
+}
+
+.container footer .footer-conteudo .redes {
+    margin-top: 10%;
 
 }
 
@@ -841,9 +968,40 @@ section .slideshow-container .fade {
     list-style: none;
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+
+    width: 60%;
+    height: auto;
+
+}
+
+.container footer .footer-conteudo .menu ul h2 {
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 5%;
+
+}
+
+.container footer .footer-conteudo .menu ul .horarios {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-top: 0%;
+    margin-bottom: 2%;
+
+}
+
+.container footer .footer-conteudo .menu ul .horarios p {
+    font-size: 12px;
+    font-weight: 400;
 
 }
 
@@ -852,10 +1010,18 @@ section .slideshow-container .fade {
     height: auto;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
 
-    margin-top: 1%;
+    margin-top: 0%;
+    margin-bottom: 2%;
+
+}
+
+.container footer .footer-conteudo .menu ul .contatos p {
+    font-size: 12px;
+    font-weight: 400;
 
 }
 
@@ -866,6 +1032,8 @@ section .slideshow-container .fade {
 
     width: 10%;
     height: auto;
+
+    margin-right: 3%;
 
 }
 
@@ -881,7 +1049,7 @@ section .slideshow-container .fade {
 
 }
 
-.container footer .footer-conteudo .menu ul .endereco {
+.container footer .footer-conteudo .menu ul .endereco { 
     width: 80%;
     height: auto;
 
@@ -889,19 +1057,32 @@ section .slideshow-container .fade {
 
     margin-top: 0%;
 
-    text-align: center;
+    text-align: left;
+
+    margin-bottom: 2%;
+
+}
+
+.container footer .footer-conteudo .menu ul .endereco p {
+    font-size: 12px;
+    font-weight: 400;
+
+    margin-top: 1%;
+    margin-bottom: 5%;
 
 }
 
 .container footer .footer-conteudo .menu ul .social {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 
-    width: 36%;
+    padding: 0% 10% 5% 10%;
+
+    width: 80%;
     height: auto;
 
-    margin-top: 1%;
+    margin-top: 0%;
 
 }
 
@@ -965,5 +1146,567 @@ section .slideshow-container .fade {
     text-decoration: none;
 
     color: var(--preto-inter);
+
+}
+
+/* BOTAO - WHATSAPP */
+/* BOTAO - WHATSAPP */
+.botao-whatsapp {
+    padding: 2%;
+
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    position: fixed;
+
+    width: 18%;
+    height: auto;
+
+    bottom: 0;
+    right: 0;
+
+    /*background-color: #001EA3;*/
+
+    text-decoration: none;
+
+    cursor: default;
+
+}
+
+.botao-whatsapp .dados-whatsapp {
+    width: 80%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--icon-whatsapp);
+
+    padding: 10%;
+
+    border-radius: 50px;
+
+    box-shadow: 0px 3px 5px -3px var(--color-preto-chumbo);
+
+    cursor: pointer;
+    
+}
+
+.botao-whatsapp .dados-whatsapp p {
+    font-size: 20px;
+    font-weight: 600;
+
+    color: var(--text-white);
+
+    margin-left: 5%;
+
+    display: none;
+
+}
+
+.botao-whatsapp .dados-whatsapp .icon {
+    width: 50px;
+    height: 50px;
+
+    /*border-radius: 50px;
+
+    background-color: var(--icon-whatsapp);
+
+    box-shadow: 0px 3px 5px -3px var(--color-preto-chumbo);*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.botao-whatsapp .dados-whatsapp .icon svg {
+    padding: 10%;
+
+    width: 80%;
+    height: auto;
+
+    color: var(--branco-inter);
+
+    cursor: pointer;
+
+}
+
+.botao-whatsapp .avaliacao-gratuita {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    position: fixed;
+
+    width: 15%;
+    height: auto;
+
+    bottom: 0;
+
+    margin-bottom: 6%;
+
+    text-decoration: none;
+
+    cursor: default;
+
+    display: none;
+
+}
+
+.botao-whatsapp .avaliacao-gratuita p {
+    font-size: 20px;
+    font-weight: 600;
+
+    color: var(--branco-inter);
+
+    padding: 5%;
+
+    background-color: var(--icon-whatsapp);
+
+    border-radius: 5px;
+
+}
+
+.botao-whatsapp .avaliacao-gratuita .triangulo {
+    width: 0; 
+    height: 0; 
+
+    margin-left: 15vh;
+
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 25px solid var(--icon-whatsapp);
+
+}
+
+/* ========================================================== */
+/* ======================== SERVICOS ======================== */
+/* ========================================================== */
+.container section .pagina-servicos {
+    width: 100%;
+    height: auto;
+
+}
+
+.container section .pagina-servicos .banner-servicos {
+    background-image: url(../img/banner_servicos.jpg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 300%;
+
+}
+
+.container section .pagina-servicos .banner-servicos p {
+    padding: 10% 0% 10% 0%;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    color: var(--branco-inter);
+
+    width: 100%;
+    height: auto;
+
+    text-align: center;
+
+}
+
+.container section .pagina-servicos .tipo-servico {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-top: 0%;
+    padding-bottom: 0%;
+
+    padding: 2%;
+
+    width: 96%;
+    height: auto;
+
+}
+
+.container section .pagina-servicos .tipo-servico .img {
+    margin-right: 0% !important;
+
+    width: 100%;
+    height: auto;
+
+}
+
+.container section .pagina-servicos .tipo-servico .img img {
+    width: 100%;
+    height: auto;
+
+}
+
+.container section .pagina-servicos .tipo-servico .texto {
+    padding: 0% 2%;
+
+    width: 96%;
+    height: auto;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.container section .pagina-servicos .tipo-servico .texto h1 {
+    font-size: 20px;
+    font-weight: 700;
+
+    color: var(--color-preto-chumbo);
+
+    margin-bottom: 5%;
+
+}
+
+.container section .pagina-servicos .tipo-servico .texto p {
+    font-size: 16px;
+    font-weight: 500;
+
+    color: var(--color-preto-chumbo);
+
+}
+
+.container section .pagina-servicos .tipo-servico .texto-clinica {
+    padding: 0% 5%;
+
+    width: 90%;
+    height: auto;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.container section .pagina-servicos .tipo-servico .texto-clinica h1 {
+    font-size: 25px;
+    font-weight: 800;
+
+    color: var(--color-preto-chumbo);
+
+    margin-bottom: 1%;
+
+}
+
+.container section .pagina-servicos .tipo-servico .texto-clinica p {
+    font-size: 16px;
+    font-weight: 400;
+
+    color: #1d1e1c;
+
+    margin-bottom: 1%;
+
+}
+
+.container section .pagina-servicos .tipo-servico .texto-clinica .frase {
+    font-size: 16px;
+    font-weight: 500;
+
+    color: #1d1e1c;
+
+    margin-bottom: 1%;
+
+}
+
+/* ============================================================ */
+/* ======================== FORMULARIO ======================== */
+/* ============================================================ */
+.container section .telaCadastro {
+    padding: 0% 2% 2% 2%;
+
+    width: 96%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 0%;
+
+}
+
+.container section .telaCadastro .form {
+    width: 100%;
+    height: auto;
+
+}
+
+.container section .telaCadastro .form h1 {
+    padding: 1%;
+
+    width: 98%;
+    height: auto;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    color: var(--text-blue-cart);
+
+}
+
+/*DECORACAO FORMULARIO*/
+
+.container section .telaCadastro .form .container-form {
+    padding: 2%;
+
+    width: 96%;
+    height: auto;
+
+}
+
+/*MENSAGEM ALERTA*/
+
+#alertaSucesso {
+    padding: 4%;
+    margin: 4%;
+
+    width: 84%;
+    height: auto;
+
+    background-color: var(--alert-gren);
+
+    border-radius: 15px;
+    border: 1px solid var(--alert-text-gren);
+
+    box-shadow: 0px 3px 5px -5px var(--box-shadown);
+
+}
+
+#alertaSucesso p {
+    font-size: 12px;
+    font-weight: 700;
+
+    color: var(--alert-text-gren);
+
+}
+
+#alertaErro {
+    padding: 4%;
+    margin: 4%;
+
+    width: 84%;
+    height: auto;
+
+    background-color: var(--alert-red);
+
+    border-radius: 15px;
+    border: 1px solid var(--alert-text-red);
+
+    box-shadow: 0px 3px 5px -5px var(--box-shadown);
+
+}
+
+#alertaErro p {
+    font-size: 12px;
+    font-weight: 700;
+
+    color: var(--alert-text-red);
+
+}
+
+/*FORMULARIO - NOME*/
+
+.container section .telaCadastro .form .container-form .nome {
+    padding: 2%;
+    width: 96%;
+    height: auto;
+
+    /*background-color: darkblue;*/
+
+}
+
+.container section .telaCadastro .form .container-form .nome label {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-blue-cart);
+
+    padding: 1%;
+    width: 98%;
+    height: auto;
+
+    display: none;
+
+}
+
+.container section .telaCadastro .form .container-form .nome label b {
+    color: var(--mandatory-red);
+
+    font-size: 16px;
+    font-weight: 400;
+
+    display: none;
+
+}
+
+.container section .telaCadastro .form .container-form .nome input {
+    padding: 2%;
+    width: 96%;
+    height: auto;
+
+    border: none;
+
+    font-size: 14px;
+    font-weight: 100;
+    color: var(--text-black);
+
+    box-shadow: 0px 3px 5px -5px var(--box-shadown);
+
+    transition: background-color, .5s;
+
+    border-radius: 0px;
+
+}
+
+.container section .telaCadastro .form .container-form .nome textarea {
+    padding: 2%;
+    width: 96%;
+    height: auto;
+
+    border: none;
+
+    font-size: 14px;
+    font-weight: 100;
+    color: var(--text-black);
+
+    box-shadow: 0px 3px 5px -5px var(--box-shadown);
+
+    transition: background-color, .5s;
+
+    border-radius: 0px;
+
+}
+
+/* BOTOES */
+
+.container section .telaCadastro .form .container-form .botoes {
+    padding: 1%;
+    margin-left: 2%;
+
+    width: 38%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 50px;
+
+    background-color: var(--color-verde-agua);
+
+    box-shadow: 0px 3px 5px -5px var(--box-shadown);
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .avancar {
+    padding-left: 2%;
+
+    width: 98%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .avancar button {
+    width: 100%;
+    height: auto;
+    
+    border-radius: 50px;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    background-color: transparent;
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .avancar button p {
+    font-size: 20px !important;
+    font-weight: 100 !important;
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .avancar button .icon {
+    padding: 3%;
+
+    width: 12%;
+    height: auto;
+
+    /*background-color: var(--color-preto-chumbo);*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0px 0px 0px 0px;
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .avancar button .icon svg {
+    width: 100%;
+    height: auto;
+
+    color: var(--text-white);
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .avancar button p {
+    padding: 3%;
+
+    width: 82%;
+    height: auto;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: var(--text-white);
+
+    text-transform: uppercase;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0px 10px 10px 0px;
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .login {
+    padding: 2%;
+
+    width: 96%;
+    height: auto;
+
+    text-align: right;
+
+}
+
+.container section .telaCadastro .form .container-form .botoes .login a {
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: var(--text-black);
 
 }
