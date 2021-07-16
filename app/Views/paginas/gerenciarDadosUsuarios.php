@@ -1,23 +1,24 @@
 <section>
-    <div class="pagina-servicos">
-        <div class="banner-servicos">
-            <p>Recesso diminuição de testa</p>
-        </div>
-
-        <div class="tipo-servico">
-            <div class="img">
-                <img src="<?=URL?>/public/img/reducao_testa.png" alt="Recesso">
-            </div>
-            <div class="texto">
-                <h1>Transplante capilar feminino e diminuição de testa</h1>
-                <p>O transplante capilar feminino está cada vez mais ganhando espaço em virtude da técnica FUE proporcionar ausência de cortes. Na maioria dos casos, não é necessário raspar a área que receberá o transplante.</p>
-                <p>O transplante feminino poderá ser realizado para redução do tamanho da testa, cobertura das entradas e para os casos de calvície feminina.</p>
-            </div>
-        </div>
-    </div>
+    <table class="tabela-usuarios">
+        <!--<tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Cel</th>
+            <th>Mensagem</th>
+        </tr>-->
+        <?php foreach($dados['usuarios'] as $usuario): ?>
+            <tr>
+                <td><strong>Nome:</strong> <?= $usuario->nome ?></a></td>
+                <td><strong>E-mail:</strong> <?= $usuario->email ?></td>
+                <td><strong>Cel.:</strong> <?= $usuario->cel ?></td>
+                <td><strong>Mensagem:</strong><br/> <?= $usuario->msg ?></td>
+                <td><hr /></td>
+            </tr>
+        <?php endforeach ?>
+    </table>
 </section>
 
-<section>
+<!--<section>
     <div class="telaCadastro">
         <h2>Entre em contato</h2>
         <form class="form" action="<?=URL?>/usuarios/cadastrar" method="POST">
@@ -38,14 +39,6 @@
                     <label for="msg">Mensagem <b>*</b></label>
                     <textarea type="text" id="msg" name="msg" rows="10" placeholder="Escreva sua mensagem..." value="<?=$dados['msg']?>" ></textarea>
                 </div>
-                <!--<div class="nome">
-                    <label for="senha">Senha <b>*</b></label>
-                    <input type="password" id="senha" name="senha" placeholder="Senha" value="<?=$dados['senha']?>" />
-                </div>
-                <div class="nome">
-                    <label for="confirmaSenha">Confirmar Senha <b>*</b></label>
-                    <input type="password" id="confirmaSenha" name="confirmaSenha" placeholder="Confirmar Senha" value="<?=$dados['confirmar_senha']?>" />
-                </div>-->
                 <div class="botoes">
                     <div class="avancar">
                         <button type="submit">
@@ -56,10 +49,10 @@
             </div>
         </form>
     </div>
-</section>
+</!--section>-->
 
 <!-- BOTAO WHATSAPP -->
-<a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
+<!--<a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
     <div class="avaliacao-gratuita">
         <p>Agende avaliação gratuita</p>
         <div class="triangulo">
@@ -74,4 +67,4 @@
         </div>
         <p>WhatsApp</p>
     </div>
-</a>
+</a>-->

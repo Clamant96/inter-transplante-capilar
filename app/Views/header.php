@@ -28,7 +28,7 @@
     <!-- HEADER MENU -->
     
     <div class="header-menu">
-        <a href="<?=URL?>/paginas/home" class="logo">
+        <a href="<?=URL?>/paginas/home" class="logo home-celular">
             <img src="<?=URL?>/public/img/logo_site_cortado.png" alt="<?=APP_NOME?>">
         </a>
         <!--<div class="menu">
@@ -41,7 +41,10 @@
             </ul>
         </div>-->
         <div class="topnav" id="menuResposivo">
-            <a href="<?=URL?>/paginas/home">Home</a>
+            <a href="<?=URL?>/paginas/home" class="logo-celular" >
+                <img src="<?=URL?>/public/img/logo_site_cortado.png" alt="<?=APP_NOME?>">
+            </a>
+            <a href="<?=URL?>/paginas/home" class="home-celular">Home</a>
             <a href="<?=URL?>/paginas/sobreClinica">A Clínica</a>
             <a class="redimencionado" href="#">Transplante masculino</a>
             <a class="redimencionado" href="#">Transplante sombrancelha</a>

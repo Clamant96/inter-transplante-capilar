@@ -256,6 +256,27 @@ html, body {
 
 }
 
+.container header .header-menu .logo-celular {
+    width: 60%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container header .header-menu .logo-celular img {
+    width: 100%;
+    height: auto;
+
+}
+
+.container header .header-menu .home-celular {
+    display: none;
+
+}
+
 .container header .header-menu .menu {
     display: flex;
     align-items: center;
@@ -332,7 +353,7 @@ html, body {
 }
 
 .topnav a:hover {
-    background-color: var(--background-verde-agua);
+    background-color: transparent;
     color: black;
     border-radius: 0px;
 }
@@ -1708,5 +1729,57 @@ section .banner-celular img {
     font-weight: 500;
 
     color: var(--text-black);
+
+}
+
+/* TABELA USUARIOS */
+.container .tabela-usuarios {
+    width: 90%;
+    height: auto;
+
+}
+
+.container .tabela-usuarios tr {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 2% 0%;
+
+    color: var(--color-preto-chumbo);
+
+}
+
+.container .tabela-usuarios tr th {
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+.container .tabela-usuarios tr td strong {
+    font-size: 20px !important; 
+    font-weight: 700;
+
+}
+
+.container .tabela-usuarios tr td {
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.container .tabela-usuarios tr td hr {
+    width: 150px;
+    height: auto;
+
+    border-top: 0px solid var(--background-preto-inter);
+    border-left: 0px solid var(--background-preto-inter);
+    border-right: 0px solid var(--background-preto-inter);
+    border-bottom: 3px solid var(--background-verde-agua);
+
+    margin-top: 10%;
+
+    text-align: center;
 
 }

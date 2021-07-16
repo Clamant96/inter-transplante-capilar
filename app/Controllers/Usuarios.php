@@ -15,9 +15,10 @@ class Usuarios extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -40,11 +41,17 @@ class Usuarios extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -83,15 +90,17 @@ class Usuarios extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;

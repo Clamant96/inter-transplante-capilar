@@ -33,8 +33,8 @@
                     <input type="text" id="cel" name="cel" placeholder="DDD + Telefone" value="<?=$dados['cel']?>" />
                 </div>
                 <div class="nome">
-                    <label for="mensagem">Mensagem <b>*</b></label>
-                    <textarea type="text" id="mensagem" name="mensagem" rows="10" placeholder="Escreva sua mensagem..." ></textarea>
+                    <label for="msg">Mensagem <b>*</b></label>
+                    <textarea type="text" id="msg" name="msg" rows="10" placeholder="Escreva sua mensagem..." value="<?=$dados['msg']?>" ></textarea>
                 </div>
                 <!--<div class="nome">
                     <label for="senha">Senha <b>*</b></label>

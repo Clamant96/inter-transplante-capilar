@@ -3,8 +3,8 @@
 class Paginas extends Controller {
 
     public function __construct() {
-        $this->postModel = $this->model('Post');
-        $this->produtoModel = $this->model('Produto');
+        /*$this->postModel = $this->model('Post');
+        $this->produtoModel = $this->model('Produto');*/
         $this->usuarioModel = $this->model('Usuario');
     }
 
@@ -16,9 +16,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -41,11 +42,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -84,15 +91,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -101,12 +110,12 @@ class Paginas extends Controller {
         
     }
 
-    public function sobre() {
+    public function adm() {
         $dados = [
-            'tituloPaginas' => 'Sobre Nos'
+            'usuarios' => $this->usuarioModel->findAllByUsuarios()
         ];
         
-        $this->view('paginas/sobre', $dados);
+        $this->view('paginas/gerenciarDadosUsuarios', $dados);
     }
 
     public function home() {
@@ -117,9 +126,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -142,11 +152,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -185,15 +201,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -209,9 +227,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -234,11 +253,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -277,15 +302,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -301,9 +328,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -326,11 +354,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -369,15 +403,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -393,9 +429,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -418,12 +455,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
-
+                endif;*/
             else:
                 if(Checa::checarNome($formulario['nome'])):
                     $dados['preencha_nome'] = 'O nome informado e invalido';
@@ -461,15 +503,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -485,9 +529,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -510,11 +555,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -553,15 +604,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -577,9 +630,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -602,11 +656,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -645,15 +705,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -669,9 +731,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -694,11 +757,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -737,15 +806,17 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
@@ -761,9 +832,10 @@ class Paginas extends Controller {
                 'nome' => trim($formulario['nome']),
                 'email' => trim($formulario['email']),
                 'cel' => trim($formulario['cel']),
-                'sexo' => trim($formulario['sexo']),
+                'msg' => trim($formulario['msg']),
+                /*'sexo' => trim($formulario['sexo']),
                 'senha' => trim($formulario['senha']),
-                'confirmar_senha' => trim($formulario['confirmar_senha'])
+                'confirmar_senha' => trim($formulario['confirmar_senha'])*/
             ];
 
             if(in_array('', $formulario)):
@@ -786,11 +858,17 @@ class Paginas extends Controller {
                     $dados['preencha_cel'] = ''; 
                 endif;
 
-                if(empty($formulario['sexo'])):
+                if(empty($formulario['msg'])):
+                    $dados['preencha_msg'] = 'Preencha o campo <b>Msg.</b>';
+                else:
+                    $dados['preencha_msg'] = ''; 
+                endif;
+
+                /*if(empty($formulario['sexo'])):
                     $dados['preencha_sexo'] = 'Preencha o campo <b>Sexo</b>';
                 else:
                     $dados['preencha_sexo'] = ''; 
-                endif;
+                endif;*/
 
             else:
                 if(Checa::checarNome($formulario['nome'])):
@@ -829,20 +907,32 @@ class Paginas extends Controller {
                 'nome' => '',
                 'email' => '',
                 'cel' => '',
-                'sexo' => '',
+                'msg' => '',
+                /*'sexo' => '',
                 'senha' => '',
-                'confirmar_senha' => '',
+                'confirmar_senha' => '',*/
                 'preencha_nome' => '',
                 'preencha_email' => '',
                 'preencha_cel' => '',
-                'preencha_sexo' => '',
+                'preencha_msg' => '',
+                /*'preencha_sexo' => '',
                 'preencha_senha' => '',
-                'preencha_confirmar_senha' => ''
+                'preencha_confirmar_senha' => ''*/
             ];
             
         endif;
 
         $this->view('paginas/recesso', $dados);
+    }
+
+    /* PAINEL DE USUARIOS */
+    public function getUsuarios(/*$id*/) {
+        $dados = [
+            //'usuario' => $this->usuarioModel->lerUsuarioPorId($id),
+            'usuarios' => $this->usuarioModel->listarUsuarios(),
+        ];
+
+        $this->view('dashboard/painelCliente', $dados);
     }
 
     /*DASHBOARD*/
