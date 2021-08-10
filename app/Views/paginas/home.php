@@ -89,8 +89,10 @@
             <h2>Região de antendimento</h2>
             <strong>Onde estamos</strong>
             <p>Situada no bairro Lapa, região nobre da cidade de São Paulo.</p>
-            <h3>Rua Marcilio Dias, 109 - Lapa São Paulo/SP</h3>
-            <a href="#">Conheça a nossa equipe</a>
+            <h3>Rua Marcilio Dias, 109 - Lapa São Paulo/SP - 05077-120</h3>
+            <h3><?=APP_CEL?></h3>
+            <!--<a href="#">Conheça a nossa equipe</a>-->
+            <a>Faça uma avaliação on-line ou agende uma consulta. <br/><br/>Lembramos que a avaliação on-line não substitui a consulta média pré cirúrgica.</a>
         </div>
         <div class="carrocel-endereco">
             <div class="img">
@@ -220,10 +222,10 @@
 </section>
 
 <!-- BOTAO WHATSAPP -->
-<a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
+<a href="https://api.whatsapp.com/send?phone=5511957787682&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20transplante%20capilar." target="_blank" class="botao-whatsapp">
     <div class="avaliacao-gratuita">
-        <p>Agende avaliação gratuita</p>
-        <div class="triangulo">
+        <p>Avaliação on-line</p>
+        <div class="triangulo"> 
 
         </div>
     </div>

@@ -10,7 +10,7 @@
             </div>
             <div class="texto">
                 <h1>Transplante Capilar Masculino</h1>
-                <p>Técnica FUE, as unidades são removidas uma a uma diretamente da área doadora. <br/>Maxima densidade em 1 procedimento, solução definita para a calvície.</p>
+                <p>Técnica FUE, as unidades são removidas uma a uma diretamente da área doadora. <br/>Máxima densidade em 1 procedimento, solução definita para a calvície.</p>
                 <p>Recupere sua alto estima!</p>
                 <p>Realize o seu sonho e tenha a sua felicidade de volta.</p>
             </div>
@@ -62,7 +62,7 @@
 <!-- BOTAO WHATSAPP -->
 <a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
     <div class="avaliacao-gratuita">
-        <p>Agende avaliação gratuita</p>
+        <p>Avaliação on-line</p>
         <div class="triangulo">
 
         </div>

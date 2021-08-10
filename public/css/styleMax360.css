@@ -697,6 +697,8 @@ section .banner-celular img {
 
     text-decoration: none;
 
+    text-align: center !important;
+
     background-color: var(--background-verde-agua);
 
     border-radius: 5px;

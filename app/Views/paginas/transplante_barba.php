@@ -11,7 +11,7 @@
             <div class="texto">
                 <h1>Transplante de Barba</h1>
                 <p>Para aqueles que desejam eliminar pequenas falhas da barba, ou simplesmente almejam uma barba mais densa.</p>
-                <p>Assim como no transplante capilar, os fios geralmente são retirados da parte de trás do couro cabeludo, e tambem utilizamos fios da propria barba.</p>
+                <p>Assim como no transplante capilar, os fios geralmente são retirados da parte de trás do couro cabeludo, e também utilizamos fios da propria barba.</p>
                 <p>É possível realizar o transplante em todas as áreas do rosto, seja na barba, cavanhaque, costeletas ou bigodes. Independente da parte do rosto, a recuperação no geral é bem simples.</p>
             </div>
         </div>
@@ -62,7 +62,7 @@
 <!-- BOTAO WHATSAPP -->
 <a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
     <div class="avaliacao-gratuita">
-        <p>Agende avaliação gratuita</p>
+        <p>Avaliação on-line</p>
         <div class="triangulo">
 
         </div>

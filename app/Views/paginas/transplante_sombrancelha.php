@@ -11,7 +11,7 @@
             <div class="texto">
                 <h1>Transplante de Sobrancelhas</h1>
                 <p>As sobrancelhas são elementos importantes na harmonização e expressão facial, afinal,  preenche, dá volume e destaca o olhar com bastante naturalidade. Entretanto, percebe-se inúmeros relatos de homens e mulheres com queixas relacionadas à assimetria ou falhas na região dos supercílios, resultando em constante insatisfação.</p>
-                <p>Seja por falhas decorrentes de cicatrizes, excesso de retirada dos fios ou hipotireoidismo, essa situação é bastante comum. A boa notícia nesses casos é que, embora ainda pouco conhecido, já existe a possibilidade de aproveitar os benefícios do transplante capilar para preencher falhas ou aumentar e até mesmo diminuir o volume das sobrancelhas.</p>
+                <p>Seja por falhas decorrentes de cicatrizes, excesso de retirada dos fios ou hipotireoidismo, essa situação é bastante comum. A boa notícia nesses casos é que, embora ainda pouco conhecido, já existe a possibilidade de aproveitar os benefícios do transplante capilar para preencher falhas ou aumentar as sobrancelhas.</p>
                 <p>Para isso, são utilizadas unidades foliculares com raízes individuais, retiradas do couro cabeludo e transplantadas fio a fio na região das sobrancelhas, considerando a direção e angulação do rosto de cada paciente. Por ser realizado a partir do próprio pelo da pessoa, deixa um aspecto natural.</p>
             </div>
         </div>
@@ -62,7 +62,7 @@
 <!-- BOTAO WHATSAPP -->
 <a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
     <div class="avaliacao-gratuita">
-        <p>Agende avaliação gratuita</p>
+        <p>Avaliação on-line</p>
         <div class="triangulo">
 
         </div>

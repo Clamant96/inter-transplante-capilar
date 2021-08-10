@@ -42,7 +42,7 @@
                                 <circle cx="8" cy="8" r="8"/>
                             </svg>
                         </div>
-                        <p>Fios fortes e saudaveis.</p>
+                        <p>Fios fortes e saudáveis.</p>
                     </li>
                 </ul>
             </div>
@@ -94,7 +94,7 @@
 <!-- BOTAO WHATSAPP -->
 <a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
     <div class="avaliacao-gratuita">
-        <p>Agende avaliação gratuita</p>
+        <p>Avaliação on-line</p>
         <div class="triangulo">
 
         </div>

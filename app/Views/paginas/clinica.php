@@ -9,7 +9,7 @@
                 <h1>Quem somos</h1>
                 <p>A equipe da <strong>Inter Capilar</strong> possui preocupação genuína em oferecer um atendimento humanizado e individualizado.</p>
                 <p>A excelência está em nosso DNA, e comprometimento para atender as expectativas e necessidades dos pacientes. <br />Nosso objetivo é elevar a autoestima das pessoas que optam pela Inter Capilar, proporcionando-lhes uma melhor qualidade de vida. <br/>Nosso time é formado por profissionais capacitados e com ampla experiência em restauração capilar.</p>
-                <p class="frase">Inter Capilar, é excelencia em resultado que você procura, com o cuidado que você merece!</p>
+                <p class="frase">Inter Capilar, é excelência em resultado que você procura, com o cuidado que você merece!</p>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
 <!-- BOTAO WHATSAPP -->
 <a href="https://api.whatsapp.com/send?phone=5511972228292&text=Ol%C3%A1%20visitante%2C%20seja%20bem-vindo%20logo%20irei%20lhe%20atender.%20" target="_blank" class="botao-whatsapp">
     <div class="avaliacao-gratuita">
-        <p>Agende avaliação gratuita</p>
+        <p>Avaliação on-line</p>
         <div class="triangulo">
 
         </div>

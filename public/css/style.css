@@ -731,7 +731,7 @@ section .banner img {
 
     margin: 10% 0% 10% 10%;
 
-    width: 35%;
+    width: 40%;
     height: auto;
 
     color: var(--color-preto-chumbo);
@@ -1218,6 +1218,9 @@ section .banner img {
     flex-direction: column;
     justify-content: center;
 
+    width: 50%;
+    height: auto;
+
 }
 
 .container footer .footer-conteudo .menu ul .contatos {
@@ -1270,7 +1273,7 @@ section .banner img {
     align-items: center;
     justify-content: space-evenly;
 
-    width: 46%;
+    width: 100%;
     height: auto;
 
     margin-top: 2.5%;
@@ -1286,7 +1289,7 @@ section .banner img {
 
     padding: 5%;
 
-    width: 84%;
+    width: 33.3333%;
     height: auto;
 
     background-color: var(--color-verde-agua);
@@ -1442,6 +1445,9 @@ section .banner img {
     font-size: 20px;
     font-weight: 600;
 
+    width: 200px;
+    height: auto;
+
     color: var(--branco-inter);
 
     padding: 5%;
@@ -1449,6 +1455,8 @@ section .banner img {
     background-color: var(--icon-whatsapp);
 
     border-radius: 5px;
+
+    text-align: center;
 
 }
 

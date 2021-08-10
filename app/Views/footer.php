@@ -25,7 +25,8 @@
             <ul>
                 <h2>Horário de atendimento</h2>
                 <div class="horarios">
-                    <p>De seg. à sex. 9h às 20h</p>
+                    <p>De seg. à sex. 9h às 21h</p>
+                    <p>De sab. 9h às 14h</p>
                 </div> 
             </ul>
         </div>
