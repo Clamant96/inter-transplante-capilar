@@ -69,6 +69,16 @@ class Usuarios extends Controller {
                     //instancia a classe Usuario
                     //armazena do $dados dentro do metodo armazenar()
                     if($this->usuarioModel->armazenar($dados)):
+
+                        ini_set('display_errors', 1);
+                        error_reporting(E_ALL);
+                        $from = $formulario['email'];
+                        $to = "neri.kevin96@gmail.com";
+                        $subject = $formulario['nome'];
+                        $message = $formulario['msg'];
+                        $headers = "From: " . $from;
+                        mail($to,$subject,$message,$headers);
+
                         Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
 
                         /* ARMAZE OS DADOS DO USUARIO NO CACHE */
